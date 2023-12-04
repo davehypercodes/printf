@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 						 length++;
 					 }
 				case 's':{
-						 *string_to_print = va_arg(arguments, char*);
+						 string_to_print = va_arg(arguments, char*);
 						 while (string_to_print[string_length] != '\0')
 							 string_length++;
 						 write(1, string_to_print, string_length);
