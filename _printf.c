@@ -35,6 +35,10 @@ int _printf(const char *format, ...)
 				break;
 			}
 			switch (format) {
+				case '%':{
+						 write(1, format, 1);
+						 length++;
+					 }
 				case 'c':{
 						 i = va_arg(arguments, int);
 						 write(1, &c, 1);
