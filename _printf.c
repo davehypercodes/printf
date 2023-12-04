@@ -9,7 +9,8 @@
 
 int _printf(const char *format, ...)
 {
-	int length, string_length = 0;
+	int length = 0;
+	int string_length = 0;
 	int i;
 	char *string_to_print;
 	va_list arguments;
@@ -30,26 +31,31 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (format == '\0')
+			if (*format == '\0')
 			{
 				break;
 			}
-			switch (format) {
+			switch (*format) {
 				case '%':{
 						 write(1, format, 1);
 						 length++;
+						 break;
 					 }
 				case 'c':{
 						 i = va_arg(arguments, int);
-						 write(1, &c, 1);
+						 write(1, &i, 1);
 						 length++;
+						 break;
 					 }
 				case 's':{
 						 string_to_print = va_arg(arguments, char*);
 						 while (string_to_print[string_length] != '\0')
+						 {
 							 string_length++;
+					 }
 						 write(1, string_to_print, string_length);
 						 length += string_length;
+						 break;
 					 }
 			}
 		}
@@ -57,4 +63,13 @@ int _printf(const char *format, ...)
 	}
 	va_end(arguments);
 	return (length);
+}
+
+int main()
+{
+	_printf("Jecolia\n");
+	_printf("%c\n", 'v');
+	_printf("%s\n", "String");
+	_printf("%%\n");
+	return (0);
 }
