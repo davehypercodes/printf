@@ -64,12 +64,3 @@ int _printf(const char *format, ...)
 	va_end(arguments);
 	return (length);
 }
-
-int main()
-{
-	_printf("Jecolia\n");
-	_printf("%c\n", 'v');
-	_printf("%s\n", "String");
-	_printf("%%\n");
-	return (0);
-}
