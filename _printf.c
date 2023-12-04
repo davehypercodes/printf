@@ -9,8 +9,9 @@
 
 int _printf(const char *format, ...)
 {
-	int length = 0;
+	int length, string_length = 0;
 	int i;
+	char *string_to_print;
 	va_list arguments;
 	va_start(arguments, format);
 
@@ -29,24 +30,27 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (format == '\0')
+			{
+				break;
+			}
+			switch (format) {
+				case 'c':{
+						 i = va_arg(arguments, int);
+						 write(1, &c, 1);
+						 length++;
+					 }
+				case 's':{
+						 *string_to_print = va_arg(arguments, char*);
+						 while (string_to_print[string_length] != '\0')
+							 string_length++;
+						 write(1, string_to_print, string_length);
+						 length += string_length;
+					 }
+			}
 		}
-
-		if (format == '\0')
-		{
-			break;
-		}
-
-		switch (format)
-		{
-			case 'c':{
-					 i = va_arg(arguments, int);
-				 }
-				 write(1, i, strlen(i));
-			case 's':{
-
-					 strlen(
-				 }
-			case '%':{
-
-				 }
-
+		format++;
+	}
+	va_end(arguments);
+	return (length);
+}
