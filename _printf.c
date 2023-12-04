@@ -26,4 +26,15 @@ int _printf(const char *format, ...)
 		{
 			format++;
 		}
+		switch (format)
+		{
+			case 'c':{
+
+				 }
+			case 's':{
+
+				 }
+			case '%':{
+
+				 }
 
