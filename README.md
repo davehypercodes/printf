@@ -6,5 +6,11 @@ Building The printf project covers the application of a whole lot of concepts in
 
 ## About Printf
 `Printf` stands for "print formatted" which really explains what it does; it is used to printf formatted strings which is basically "text" + "Format specifiers" which starts with the `%` character. The format specifiers act as placeholders for some additon we want to use to format oor text to give it more meaning like contents of a variable. The text is usually enclosed within double quotes.
+
+### Format Specifiers
+Here are some of the format specifiers that define the format of the display of arguments as text to stdout.
+| Format Specifier |               Usage             |
+| ---------------- | ------------------------------- |
+|      `%c`        | Used for printing a Single char |
 ## Collaborators
 David & Jecolia
