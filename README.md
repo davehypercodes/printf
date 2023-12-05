@@ -9,8 +9,13 @@ Building The printf project covers the application of a whole lot of concepts in
 
 ### Format Specifiers
 Here are some of the format specifiers that define the format of the display of arguments as text to stdout.
-| Format Specifier |               Usage             |
-| ---------------- | ------------------------------- |
-|      `%c`        | Used for printing a Single char |
+| Format Specifier |               Usage            	      |
+| ---------------- | ---------------------------------------- |
+|	`%c`	   | printing a single char 	     	      |
+|	`%s`       | Printing a String of Characters 	      |
+|	`%d`	   | Printing a Decimal Number (signed int)   |
+|	`%u`	   | Print an a Decimal Number (Unsigned int) |
+|
+|
 ## Collaborators
 David & Jecolia
