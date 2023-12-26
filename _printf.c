@@ -2,12 +2,12 @@
 
 int _printf(const char *format, ...)
 {
-	va_list args;
-	va_start(args, format);
-
 	int count;
 	char c;
 	char *s;
+	
+	va_list args;
+	va_start(args, format);
 
 	count = 0;
 	while (*format != '\0')
