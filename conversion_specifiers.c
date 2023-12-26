@@ -97,6 +97,7 @@ int process_unsigned_integer(unsigned int num, int base)
 	char buffer[32];
 
 	i = 0;
+	count = 0;
 	if (num == 0)
 	{
 		putchar('0');
