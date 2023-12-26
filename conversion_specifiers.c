@@ -47,6 +47,7 @@ int process_character(char format_specifier, va_list args)
 int process_integer(char format_specifier, va_list args)
 {
 	int count;
+
 	unsigned int num;
 
 	count = 0;
@@ -82,3 +83,43 @@ int process_integer(char format_specifier, va_list args)
 	return (count);
 }
 
+/**
+* process_unsigned_integer - Process unsigned integer format specifier.
+* @num: The unsigned integer value.
+* @base: The base for conversion.
+*
+* Return: Number of characters printed.
+*/
+int process_unsigned_integer(unsigned int num, int base)
+{
+	int count = 0;
+
+	char buffer[32];
+
+	int i = 0;
+
+	if (num == 0)
+	{
+		putchar('0');
+		count++;
+	}
+	else
+	{
+		while (num != 0)
+		{
+			int rem = num % base;
+
+			buffer[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+			num = num / base;
+		}
+
+		for (int j = i - 1; j >= 0; j--)
+
+		{
+			putchar(buffer[j]);
+			count++;
+		}
+	}
+
+	return (count);
+}
