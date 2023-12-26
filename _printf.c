@@ -1,69 +1,56 @@
 #include "main.h"
 
-int _putchar(char c) {
-    return write(1, &c, 1);
+int _printf(const char *format, ...)
+{
+	va_list args;
+	va_start(args, format);
+
+	int count;
+	char c;
+	char *s;
+
+	count = 0;
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
+			switch (*format)
+			{
+				case 'c':
+					c = (char)va_arg(args, int);
+					putchar(c);
+					count++;
+					break;
+				case 's':
+					s = va_arg(args, char *);
+					while (*s != '\0')
+					{
+						putchar(*s);
+						s++;
+						count++;
+					}
+					break;
+				case '%':
+					putchar('%');
+					count++;
+					break;
+				default:
+					putchar('%');
+					putchar(*format);
+					count += 2;
+					break;
+			}
+		}
+		else
+		{
+			putchar(*format);
+			count++;
+		}
+		format++;
+	}
+
+	va_end(args);
+
+	return count;
 }
-
-int print_char(va_list arguments, int *length) {
-    int i = va_arg(arguments, int);
-    *length += _putchar(i);
-    return 1;
-}
-
-int print_string(va_list arguments, int *length) {
-    char *string_to_print = va_arg(arguments, char *);
-    int string_length = 0;
-
-    while (string_to_print[string_length] != '\0') {
-        string_length++;
-    }
-
-    *length += write(1, string_to_print, string_length);
-    return string_length;
-}
-
-int process_format(const char *format, va_list arguments) {
-    int length = 0;
-
-    while (*format != '\0') {
-        if (*format != '%') {
-            _putchar(*format);
-            length++;
-        } else {
-            format++;
-            if (*format == '\0') {
-                break;
-            }
-
-            switch (*format) {
-                case '%':
-                    _putchar(*format);
-                    length++;
-                    break;
-                case 'c':
-                    length += print_char(arguments, &length);
-                    break;
-                case 's':
-                    length += print_string(arguments, &length);
-                    break;
-            }
-        }
-        format++;
-    }
-
-    return length;
-}
-
-int _printf(const char *format, ...) {
-    if (format == NULL) {
-        return -1;
-    }
-
-    va_list arguments;
-    va_start(arguments, format);
-    int length = process_format(format, arguments);
-    va_end(arguments);
-
-    return length;
-}
-
