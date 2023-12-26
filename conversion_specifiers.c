@@ -92,12 +92,11 @@ int process_integer(char format_specifier, va_list args)
 */
 int process_unsigned_integer(unsigned int num, int base)
 {
-	int count = 0;
-
+	int count;
+	int j, i, rem;
 	char buffer[32];
 
-	int i = 0;
-
+	i = 0;
 	if (num == 0)
 	{
 		putchar('0');
@@ -107,13 +106,13 @@ int process_unsigned_integer(unsigned int num, int base)
 	{
 		while (num != 0)
 		{
-			int rem = num % base;
+			rem = num % base;
 
 			buffer[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
 			num = num / base;
 		}
 
-		for (int j = i - 1; j >= 0; j--)
+		for (j = i - 1; j >= 0; j--)
 
 		{
 			putchar(buffer[j]);
