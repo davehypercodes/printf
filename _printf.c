@@ -93,8 +93,9 @@ int process_format_specifier(char format_specifier, va_list args)
  */
 int process_string(char *s)
 {
-	int count = 0;
+	int count;
 
+	count = 0;
 	if (s == NULL)
 	{
 		printf("(null)");
