@@ -24,25 +24,33 @@ int _printf(const char *format, ...)
 			{
 				switch (*format)
 				{
-					case 'c':
-						c = (char)va_arg(args, int);
-						putchar(c);
-						count++;
-						break;
-					case 's':
-						s = va_arg(args, char *);
+				case 'c':
+					c = (char)va_arg(args, int);
+					putchar(c);
+					count++;
+					break;
+				case 's':
+					s = va_arg(args, char *);
+					if (s == NULL)
+					{
+						printf("(null)");
+						count += 6;
+					}
+					else
+					{
 						while (*s != '\0')
 						{
 							putchar(*s);
 							s++;
 							count++;
 						}
-						break;
-					default:
-						putchar('%');
-						putchar(*format);
-						count += 2;
-						break;
+					}
+					break;
+				default:
+					putchar('%');
+					putchar(*format);
+					count += 2;
+					break;
 				}
 			}
 		}
