@@ -32,9 +32,13 @@ int _printf(const char *format, ...)
 				putchar('%');
 				count++;
 			}
-			else
+			else if (*format == 'c' || *format == 's')
 			{
-				count += process_format_specifier(*format, args);
+				count += process_character(*format, args);
+			}
+			else if (*format == 'u' || *format == 'o' || *format == 'x' || *format == 'X')
+			{
+				count += process_integer(*format, args);
 			}
 		}
 		else
@@ -46,70 +50,6 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-
-	return (count);
-}
-
-/**
- * process_format_specifier - Process and print the format specifier.
- * @format_specifier: The format specifier character.
- * @args: The va_list of arguments.
- *
- * Return: Number of characters printed.
- */
-int process_format_specifier(char format_specifier, va_list args)
-{
-	int count;
-	char c;
-	char *s;
-
-	count = 0;
-	switch (format_specifier)
-	{
-	case 'c':
-		c = (char)va_arg(args, int);
-		putchar(c);
-		count++;
-		break;
-	case 's':
-		s = va_arg(args, char *);
-		count += process_string(s);
-		break;
-	default:
-		putchar('%');
-		putchar(format_specifier);
-		count += 2;
-		break;
-	}
-
-	return (count);
-}
-
-/**
- * process_string - Process and print a string.
- * @s: The string to be processed.
- *
- * Return: Number of characters printed.
- */
-int process_string(char *s)
-{
-	int count;
-
-	count = 0;
-	if (s == NULL)
-	{
-		printf("(null)");
-		count += 6;
-	}
-	else
-	{
-		while (*s != '\0')
-		{
-			putchar(*s);
-			s++;
-			count++;
-		}
-	}
 
 	return (count);
 }
