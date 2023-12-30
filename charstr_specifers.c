@@ -11,7 +11,7 @@
 int handle_char_str(char specifier, va_list args)
 {
 	char c;
-	const char *s;
+	char *s;
 	int count = 0;
 
 	switch (specifier)
@@ -53,21 +53,19 @@ int handle_char_str(char specifier, va_list args)
  *
  * Return: The number of characters processed.
  */
-int process_string(const char *s)
+int process_string(char *s)
 {
-	char *str;
 	int count = 0;
 
-	str = (char *)s;
-	if (str == NULL)
+	if (s == NULL)
 	{
-		str = "(null)";
+		s = "(null)";
 	}
 
-	while (*str != '\0')
+	while (*s != '\0')
 	{
-		putchar(*str);
-		str++;
+		putchar(*s);
+		s++;
 		count++;
 	}
 	return (count);

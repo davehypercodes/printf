@@ -6,6 +6,6 @@
 
 int _printf(const char *format, ...);
 int handle_char_str(char specifier, va_list args);
-int process_string(const char *s);
+int process_string(char *s);
 
 #endif
