@@ -26,12 +26,7 @@ int handle_char_str(char specifier, va_list args)
 		case 's':
 		{
 			s = va_arg(args, char *);
-			while (*s != '\0')
-			{
-				putchar(*s);
-				s++;
-				count++;
-			}
+			count += process_string(s);
 			break;
 		}
 		case '%':
@@ -47,6 +42,33 @@ int handle_char_str(char specifier, va_list args)
 			count += 2;
 			break;
 		}
+	}
+	return (count);
+}
+
+/**
+ * process_string - Processes a string and prints its characters.
+ *
+ * @s: The string to be processed.
+ *
+ * Return: The number of characters processed.
+ */
+int process_string(const char *s)
+{
+	char *str;
+	int count = 0;
+
+	str = (char *)s;
+	if (str == NULL)
+	{
+		str = "(null)";
+	}
+
+	while (*str != '\0')
+	{
+		putchar(*str);
+		str++;
+		count++;
 	}
 	return (count);
 }
