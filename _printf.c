@@ -15,9 +15,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 	if (format == NULL)
-	{
 		return (-1);
-	}
 
 	while (*format != '\0')
 	{
@@ -28,18 +26,37 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			count += handle_char_str(*format, args);
+			if (_detect_char_format(*format))
+				count += handle_char_str(*format, args);
 		}
 		else
 		{
 			putchar(*format);
 			count++;
 		}
-
 		format++;
 	}
-
 	va_end(args);
-
 	return (count);
+}
+
+
+/**
+ * _detect_char_format - Detects if a character is a valid format specifier.
+ *
+ * @format: The character to check.
+ *
+ * Return: 1 if the character is a valid format specifier, 0 otherwise.
+ */
+int _detect_char_format(char format)
+{
+	int i;
+	char *format_list = "cs%";
+
+	for (i = 0; format_list[i] != '\0'; i++)
+	{
+		if (format == format_list[i])
+			return (1);
+	}
+	return (0);
 }
