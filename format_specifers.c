@@ -35,13 +35,6 @@ int handle_char_str(char specifier, va_list args)
 			count++;
 			break;
 		}
-		default:
-		{
-			putchar('%');
-			putchar(specifier);
-			count += 2;
-			break;
-		}
 	}
 	return (count);
 }
@@ -68,5 +61,52 @@ int process_string(char *s)
 		s++;
 		count++;
 	}
+	return (count);
+}
+
+/**
+ * handle_int - Handles the integer specifiers in _printf.
+ *
+ * @specifier: The format specifier character.
+ * @args: The variable argument list.
+ *
+ * Return: The number of characters printed.
+ */
+int handle_int(char specifier, va_list args)
+{
+	int n;
+	int count = 0;
+
+	n = va_arg(args, int);
+	if (specifier == 'd' || specifier == 'i')
+	{
+		count += print_number(n);
+	}
+	return (count);
+}
+
+/**
+ * print_number - Prints an integer.
+ *
+ * @n: The integer to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+int print_number(int n)
+{
+	int count = 0;
+
+	if (n < 0)
+	{
+		putchar('-');
+		count++;
+		n = -n;
+	}
+	if (n / 10)
+	{
+		count += print_number(n / 10);
+	}
+	putchar(n % 10 + '0');
+	count++;
 	return (count);
 }

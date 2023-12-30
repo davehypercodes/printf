@@ -7,6 +7,6 @@
 int _printf(const char *format, ...);
 int handle_char_str(char specifier, va_list args);
 int process_string(char *s);
-int _detect_char_format(char format);
+int _detect_format(char format, va_list args);
 
 #endif

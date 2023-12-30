@@ -26,8 +26,7 @@ int _printf(const char *format, ...)
 			{
 				return (-1);
 			}
-			if (_detect_char_format(*format))
-				count += handle_char_str(*format, args);
+			count += _detect_format(*format, args);
 		}
 		else
 		{
@@ -42,21 +41,26 @@ int _printf(const char *format, ...)
 
 
 /**
- * _detect_char_format - Detects if a character is a valid format specifier.
+ * _detect_format - Detects if a character is a valid format specifier.
  *
  * @format: The character to check.
+ * @args: The va_list to check.
  *
  * Return: 1 if the character is a valid format specifier, 0 otherwise.
  */
-int _detect_char_format(char format)
+int _detect_format(char format, va_list args)
 {
-	int i;
-	char *format_list = "cs%";
+	int count = 0;
 
-	for (i = 0; format_list[i] != '\0'; i++)
+	if (format == 's' || format == 'c' || format == '%')
+		count += handle_char_str(format, args);
+	else if (format == 'd' || format == 'i')
+		count += handle_int(format, args);
+	else
 	{
-		if (format == format_list[i])
-			return (1);
+		putchar('%');
+		putchar(format);
+		count += 2;
 	}
-	return (0);
+	return (count);
 }
