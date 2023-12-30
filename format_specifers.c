@@ -95,18 +95,19 @@ int handle_int(char specifier, va_list args)
 int print_number(int n)
 {
 	int count = 0;
+	long m = n;
 
-	if (n < 0)
+	if (m < 0)
 	{
 		putchar('-');
 		count++;
-		n = -n;
+		m = -m;
 	}
-	if (n / 10)
+	if (m / 10)
 	{
-		count += print_number(n / 10);
+		count += print_number(m / 10);
 	}
-	putchar(n % 10 + '0');
+	putchar(m % 10 + '0');
 	count++;
 	return (count);
 }
