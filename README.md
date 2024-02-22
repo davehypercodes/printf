@@ -20,4 +20,3 @@ Here are some of the most common format specifiers that define the format of the
 The `printf` has a lot of more interesting attributes that make it special and good to grasp some important concepts in C programming. This README just touches the surface of what the printf project is all about.
 ## Collaborators
 David & Jecolia
-
