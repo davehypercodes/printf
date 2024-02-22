@@ -4,6 +4,7 @@
 /* Standard library */
 #include <stddef.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /* Function prtotypes */
 int _printf(const char *format, ...);

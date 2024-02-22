@@ -63,13 +63,13 @@ int handle_int(int num)
 
 	if (n < 0)
 	{
-		count += putchar('-');
+		count += _putchar('-');
 		n = -n;
 	}
 	if (n / 10)
 	{
-		count += print_number(n / 10);
+		count += handle_int(n / 10);
 	}
-	count += putchar((n % 10) + '0');
+	count += _putchar((n % 10) + '0');
 	return (count);
 }
