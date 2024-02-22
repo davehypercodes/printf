@@ -63,7 +63,7 @@ int detect_format(char specifier, va_list args)
 	}
 	else if (specifier == 'i' || specifier == 'd')
 	{
-		count += handle_int(va_start(args, int));
+		count += handle_int(va_arg(args, int));
 	}
 	else
 	{

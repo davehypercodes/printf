@@ -35,6 +35,8 @@ int handle_char_str(char specifier, va_list args)
  */
 int process_string(char *s)
 {
+	int count = 0;
+
 	if (s == NULL)
 	{
 		s = "(null)";
@@ -54,7 +56,7 @@ int process_string(char *s)
  *
  * Return: The num of digits printed to stdout
  */
-int handle_int(int num);
+int handle_int(int num)
 {
 	long int n = num;
 	int count = 0;
