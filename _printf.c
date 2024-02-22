@@ -50,7 +50,7 @@ int _putchar(char c)
 /**
  * detect_format -  detects what format specifiers are in the format string
  * @specifier: format specifier
- * args: va_list object, the argument that corresponds to the format spec.
+ * @args: va_list object, the argument that corresponds to the format spec.
  *
  * Return: num of bytes of the present va_list object
  */
