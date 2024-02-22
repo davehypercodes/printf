@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * handle_char_str - uses the right format spec 
+ * handle_char_str - uses the right format spec
  * to correctly print out the argument
  * @specifier: format specifier
  * @args: arguments
- * 
+ *
  * Return: num of bytes printed
  */
 int handle_char_str(char specifier, va_list args)
@@ -41,7 +41,7 @@ int process_string(char *s)
 	{
 		s = "(null)";
 	}
-		
+
 	while (*s != '\0')
 	{
 		count += _putchar(*s);

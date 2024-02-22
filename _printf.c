@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			/* Return error if format string contains only '%' */ 
+			/* Return error if format string contains only '%' */
 			if (*format == '\0')
 				return (-1);
 			count += detect_format(*format, args);
@@ -44,10 +44,11 @@ int _printf(const char *format, ...)
  */
 int _putchar(char c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
-/** detect_format -  detects what format specifiers are in the format string
+/**
+ * detect_format -  detects what format specifiers are in the format string
  * @specifier: format specifier
  * arg: va_list object, the argument that corresponds to the format spec.
  *
