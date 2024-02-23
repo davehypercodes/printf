@@ -66,6 +66,10 @@ int detect_format(char specifier, va_list args)
 	{
 		count += handle_int(va_arg(args, int));
 	}
+	else if (specifier == 'b')
+	{
+		count += handle_binary(va_arg(args, unsigned int));
+	}
 	else
 	{
 		_putchar('%');
@@ -74,3 +78,4 @@ int detect_format(char specifier, va_list args)
 	}
 	return (count);
 }
+

@@ -13,5 +13,6 @@ int detect_format(char specifier, va_list args);
 int handle_char_str(char specifier, va_list args);
 int handle_int(int num);
 int process_string(char *s);
+int handle_binary(unsigned int num);
 
 #endif

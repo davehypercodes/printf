@@ -73,3 +73,25 @@ int handle_int(int num)
 	count += _putchar((n % 10) + '0');
 	return (count);
 }
+
+/**
+ * handle_binary - converts an unsigned int to binary and prints it
+ * @num: unsigned int to be converted
+ *
+ * Return: num of bytes printed
+ */
+int handle_binary(unsigned int num)
+{
+	int count = 0;
+	unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1);
+
+	while (mask > 0)
+	{
+		if (num & mask)
+			count += _putchar('1');
+		else
+			count += _putchar('0');
+		mask >>= 1;
+	}
+	return (count);
+}
