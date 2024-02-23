@@ -82,17 +82,17 @@ int handle_int(int num)
  */
 int handle_binary(unsigned int num)
 {
-	
 	int count = 0;
-	unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1);
+	unsigned int mask;
 	int start_printing = 0;
 
 	if (num == 0)
 	{
 		_putchar('0');
-		_putchar('0');
-		return 2;
+		return 1;
 	}
+	
+	mask = 1 << (sizeof(unsigned int) * 8 - 1);
 
 	while (mask > 0)
 	{
