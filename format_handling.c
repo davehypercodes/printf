@@ -84,13 +84,19 @@ int handle_binary(unsigned int num)
 {
 	int count = 0;
 	unsigned int mask = 1 << (sizeof(unsigned int) * 8 - 1);
+	int start_printing = 0;
 
 	while (mask > 0)
 	{
 		if (num & mask)
+		{
+			start_printing = 1;
 			count += _putchar('1');
-		else
+		}
+		else if (start_printing)
+		{
 			count += _putchar('0');
+		}
 		mask >>= 1;
 	}
 	return (count);
