@@ -70,6 +70,22 @@ int detect_format(char specifier, va_list args)
 	{
 		count += handle_binary(va_arg(args, unsigned int));
 	}
+	else if (specifier == 'u')
+	{
+		count += handle_unsigned_int(va_arg(args, unsigned int));
+	}
+	else if (specifier == 'o')
+	{
+		count += handle_octal(va_arg(args, unsigned int));
+	}
+	else if (specifier == 'x')
+	{
+		count += handle_hex(va_arg(args, unsigned int), 0);
+	}
+	else if (specifier == 'X')
+	{
+		count += handle_hex(va_arg(args, unsigned int), 1);
+	}
 	else
 	{
 		_putchar('%');
@@ -78,4 +94,3 @@ int detect_format(char specifier, va_list args)
 	}
 	return (count);
 }
-
