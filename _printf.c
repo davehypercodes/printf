@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * _printf - prints a format string to stdout
  * @format: format string
@@ -42,9 +43,21 @@ int _printf(const char *format, ...)
  *
  * Return: 1 on succes and -1 if fail.
  */
+
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	static char buffer[BUFFER_SIZE];
+	static int index = 0;
+
+	if (c == '\0' || index >= BUFFER_SIZE - 1) {
+		write(1, buffer, index);
+		index = 0;
+		memset(buffer, 0, BUFFER_SIZE);
+	} else {
+		buffer[index++] = c;
+	}
+
+	return 1;
 }
 
 /**
