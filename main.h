@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-/* Function prtotypes */
+/* Function prototypes */
 int _printf(const char *format, ...);
 int _putchar(char c);
 int detect_format(char specifier, va_list args);

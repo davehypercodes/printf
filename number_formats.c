@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * handle_int - handles the printing of integers
  * @num: integer to be printed
