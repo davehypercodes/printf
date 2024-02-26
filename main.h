@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <math.h>
 
 /* Function prototypes */
 int _printf(const char *format, ...);
