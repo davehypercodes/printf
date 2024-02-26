@@ -91,41 +91,45 @@ int handle_unsigned_int(unsigned int num)
 
 int handle_octal(unsigned int num)
 {
-    int count = 0;
-    int *octal;
-    int i = 0;
+	int count = 0;
+	int *octal;
+	int i = 0;
 
-    int digits = num == 0 ? 1 : (int)log2(num) / 3 + 1;
+	unsigned int temp = num;
+	int digits = 0;
+	do {
+		digits++;
+		temp /= 8;
+	} while (temp > 0);
 
-    octal = (int *)malloc(digits * sizeof(int));
-    if (octal == NULL)
-    {
-        return -1;
-    }
+	octal = (int *)malloc(digits * sizeof(int));
+	if (octal == NULL)
+	{
+		return -1;
+	}
 
-    if (num == 0)
-    {
-        _putchar('0');
-        count++;
-    }
-    else
-    {
-        while (num > 0)
-        {
-            octal[i] = num % 8;
-            num = num / 8;
-            i++;
-        }
-        while (i--)
-        {
-            _putchar(octal[i] + '0');
-            count++;
-        }
-    }
+	if (num == 0)
+	{
+		_putchar('0');
+		count++;
+	}
+	else
+	{
+		while (num > 0)
+		{
+			octal[i] = num % 8;
+			num = num / 8;
+			i++;
+		}
+		while (i--)
+		{
+			_putchar(octal[i] + '0');
+			count++;
+		}
+	}
 
-    free(octal);
-
-    return (count);
+	free(octal);
+	return (count);
 }
 
 /**
